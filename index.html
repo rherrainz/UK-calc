@@ -136,10 +136,12 @@
       function getStatus(actValues, forValues, notaFinal) {
         const actValid = validateScores(actValues, 70);
         const forValid = validateScores(forValues, 70);
+        const actValidReg = validateScores(actValues, 40);
+        const forValidReg = validateScores(forValues, 40);
 
         if (notaFinal >= 70 && actValid && forValid) {
           return "<h2 class='text-success'>PROMOCIONADO</h2>";
-        } else if (notaFinal >= 40) {
+        } else if (notaFinal >= 40 && actValidReg && forValidReg) {
           return "<h2 class='text-secondary'>REGULAR</h2>";
         } else {
           return "<h2 class='text-danger'>LIBRE</h2>";
