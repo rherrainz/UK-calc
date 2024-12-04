@@ -137,7 +137,7 @@
         const actValid = validateScores(actValues, 70);
         const forValid = validateScores(forValues, 70);
 
-        if (notaFinal >= 70 && actValid && forValid) {
+        if (notaFinal >= 70 && actValid && forValid && parc1>=70 && parc2>=70) {
           return "<h2 class='text-success'>PROMOCIONADO</h2>";
         } else if (notaFinal >= 40) {
           return "<h2 class='text-secondary'>REGULAR</h2>";
