@@ -4,6 +4,10 @@ Este es un sitio web responsive que permite calcular el promedio de actividades,
 
 > Este es un proyecto independiente y no oficial. No representa ni está afiliado a la Universidad Kennedy.
 
+## Versión publicada
+
+[Abrir la calculadora](https://rherrainz.github.io/UK-calc/)
+
 ## Funcionalidades
 
 - Calcular el promedio de actividades (30%), foros (20%) y parciales (50%).
