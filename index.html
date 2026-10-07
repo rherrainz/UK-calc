@@ -1,170 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Calculadora no oficial de condición académica para materias de modalidad virtual Kennedy."
     />
-    <title>Calculadora UK</title>
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://cdn.jsdelivr.net; script-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests"
+    />
+    <title>Calculadora Kennedy | Modalidad virtual</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
   </head>
+
   <body>
-    <header class="container-md row p-3">
-      <h1 class="text-center">Calculadora Materias UK</h1>
+    <a class="skip-link" href="#calculator">Ir a la calculadora</a>
+    <div class="topbar" aria-hidden="true"></div>
+
+    <header class="container site-header">
+      <div class="brand">
+        <p class="brand-name">Calculadora Kennedy</p>
+        <p class="brand-subtitle">Modalidad virtual · Herramienta no oficial</p>
+      </div>
+      <p class="header-label d-none d-sm-block">Notas y condición académica</p>
     </header>
 
-    <div class="container-md row p-3">
-      <!-- Sección de Actividades -->
-      <ul class="list-group col p-3">
-        <li class="list-group-item">
-          Actividad 1:
-          <input type="number" id="act1" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Actividad 2:
-          <input type="number" id="act2" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Actividad 3:
-          <input type="number" id="act3" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Actividad 4:
-          <input type="number" id="act4" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Promedio Actividades: <span id="promActiv"></span>
-        </li>
-      </ul>
+    <main class="container pb-4">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Calculadora académica</p>
+          <h1 id="page-title">Calculá tu condición en la materia</h1>
+          <p class="hero-description">
+            Ingresá tus calificaciones para conocer el promedio final y saber si
+            alcanzaste la promoción o la regularidad.
+          </p>
+        </div>
 
-      <!-- Sección de Foros -->
-      <ul class="list-group col p-3">
-        <li class="list-group-item">
-          Foro 1:
-          <input type="number" id="for1" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Foro 2:
-          <input type="number" id="for2" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Foro 3:
-          <input type="number" id="for3" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Foro 4:
-          <input type="number" id="for4" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Promedio Foros: <span id="promFor"></span>
-        </li>
-      </ul>
+        <div class="hero-weighting" aria-label="Ponderación de las calificaciones">
+          <div class="weight-row"><span>Actividades</span><strong>30%</strong></div>
+          <div class="weight-row"><span>Foros</span><strong>20%</strong></div>
+          <div class="weight-row"><span>Parciales</span><strong>50%</strong></div>
+        </div>
+      </section>
 
-      <!-- Sección de Parciales -->
-      <ul class="list-group col p-3">
-        <li class="list-group-item">
-          Parcial 1:
-          <input type="number" id="parc1" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Parcial 2:
-          <input type="number" id="parc2" class="text-end" placeholder="0" />
-        </li>
-        <li class="list-group-item">
-          Promedio Parciales: <span id="promParc"></span>
-        </li>
-      </ul>
-    </div>
+      <form class="calculator" id="calculator" novalidate>
+        <div class="section-heading">
+          <div>
+            <h2>Ingresá tus notas</h2>
+            <p class="section-note mb-0" id="grade-help">
+              Usá valores entre 0 y 100. Los campos vacíos equivalen a 0.
+            </p>
+          </div>
+          <p class="section-note mb-0">La condición se determina sin redondear.</p>
+        </div>
 
-    <!-- Contenedor de botones para calcular y limpiar -->
-    <div class="container d-flex justify-content-center my-3">
-      <button type="button" class="btn btn-primary btn-lg mx-2" id="calc" onclick="calcNota()">
-        Calcular
-      </button>
-      <button type="button" class="btn btn-secondary btn-lg mx-2" id="clear" onclick="limpiarInputs()">
-        Limpiar
-      </button>
-    </div>
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-xl-4">
+            <fieldset class="grade-card h-100">
+              <legend>
+                <span class="group-title">Actividades <span class="percentage">30%</span></span>
+              </legend>
+              <div class="inputs">
+                <div class="input-row"><label for="act1">Actividad 1</label><input class="form-control" type="number" id="act1" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="act2">Actividad 2</label><input class="form-control" type="number" id="act2" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="act3">Actividad 3</label><input class="form-control" type="number" id="act3" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="act4">Actividad 4</label><input class="form-control" type="number" id="act4" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+              </div>
+            </fieldset>
+          </div>
 
-    <div class="container" id="nota"></div>
-    <div class="container" id="status"></div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <fieldset class="grade-card h-100">
+              <legend>
+                <span class="group-title">Foros <span class="percentage">20%</span></span>
+              </legend>
+              <div class="inputs">
+                <div class="input-row"><label for="for1">Foro 1</label><input class="form-control" type="number" id="for1" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="for2">Foro 2</label><input class="form-control" type="number" id="for2" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="for3">Foro 3</label><input class="form-control" type="number" id="for3" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="for4">Foro 4</label><input class="form-control" type="number" id="for4" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+              </div>
+            </fieldset>
+          </div>
 
-    <footer class="position-absolute bottom-0">
-      <h6 class="align-bottom">©2024 R Herrainz | <a href="www.github.com/rherrainz">Github</a></h6>
+          <div class="col-12 col-xl-4">
+            <fieldset class="grade-card h-100">
+              <legend>
+                <span class="group-title">Parciales <span class="percentage">50%</span></span>
+              </legend>
+              <div class="inputs">
+                <div class="input-row"><label for="parc1">Parcial 1</label><input class="form-control" type="number" id="parc1" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+                <div class="input-row"><label for="parc2">Parcial 2</label><input class="form-control" type="number" id="parc2" min="0" max="100" step="0.01" inputmode="decimal" placeholder="0" autocomplete="off" /></div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <p class="error-message" id="error-message" role="alert" tabindex="-1" hidden></p>
+
+        <div class="actions">
+          <button class="btn btn-outline-secondary btn-lg" type="reset">Limpiar</button>
+          <button class="btn btn-uk btn-lg" type="submit">Calcular resultado</button>
+        </div>
+      </form>
+
+      <section class="result" id="result" aria-live="polite" aria-atomic="true" aria-labelledby="result-condition" hidden>
+        <div class="result-status" id="result-status">
+          <p class="result-kicker">Tu condición</p>
+          <p class="result-condition" id="result-condition"></p>
+        </div>
+        <div class="result-details">
+          <p class="final-grade-label">Nota final</p>
+          <p class="final-grade" id="final-grade"></p>
+          <div class="averages">
+            <div class="average"><span>Promedio actividades</span><strong id="activities-average"></strong></div>
+            <div class="average"><span>Promedio foros</span><strong id="forums-average"></strong></div>
+            <div class="average"><span>Promedio parciales</span><strong id="exams-average"></strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row g-3 rules" aria-label="Condiciones académicas">
+        <div class="col-12 col-lg-6">
+          <article class="rule-card h-100">
+            <h2>Para promocionar</h2>
+            <p>Nota final de 70 o más, al menos 3 actividades y 3 foros con 70 o más, y ambos parciales con 70 o más.</p>
+          </article>
+        </div>
+        <div class="col-12 col-lg-6">
+          <article class="rule-card h-100">
+            <h2>Para regularizar</h2>
+            <p>Nota final de 40 o más, al menos 3 actividades y 3 foros con 40 o más, y ambos parciales con 40 o más.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <span>© 2026 R. Herrainz</span>
+      <nav class="footer-links" aria-label="Perfiles del autor">
+        <a href="https://github.com/rherrainz" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/rherrainz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+      <span>Proyecto independiente y no oficial</span>
     </footer>
-
-    <script>
-      function getInputValues(ids) {
-        return ids.map(id => parseFloat(document.getElementById(id).value) || 0);
-      }
-
-      function calcPromedio(values) {
-        const sum = values.reduce((acc, val) => acc + val, 0);
-        return sum / values.length;
-      }
-
-      function calcNota() {
-        const actValues = getInputValues(["act1", "act2", "act3", "act4"]);
-        const forValues = getInputValues(["for1", "for2", "for3", "for4"]);
-        const parcValues = getInputValues(["parc1", "parc2"]);
-
-        // Validar si hay algún valor mayor a 100
-        if (actValues.some(val => val > 100) || forValues.some(val => val > 100) || parcValues.some(val => val > 100)) {
-          document.getElementById("status").innerHTML = "<h2 class='text-danger'>Error: Las calificaciones no pueden ser mayores a 100.</h2>";
-          document.getElementById("nota").textContent = "";
-          document.getElementById("promActiv").textContent = "";
-          document.getElementById("promFor").textContent = "";
-          document.getElementById("promParc").textContent = "";
-          return;
-        }
-
-        const pActiv = calcPromedio(actValues);
-        const pFor = calcPromedio(forValues);
-        const pParc = calcPromedio(parcValues);
-        const notaFinal = pActiv * 0.3 + pFor * 0.2 + pParc * 0.5;
-
-        document.getElementById("nota").textContent = "La nota final es: " + notaFinal.toFixed(2);
-        document.getElementById("promActiv").textContent = pActiv.toFixed(2);
-        document.getElementById("promFor").textContent = pFor.toFixed(2);
-        document.getElementById("promParc").textContent = pParc.toFixed(2);
-
-        const status = getStatus(actValues, forValues, notaFinal);
-        document.getElementById("status").innerHTML = status;
-      }
-
-      function getStatus(actValues, forValues, notaFinal) {
-        const actValid = validateScores(actValues, 70);
-        const forValid = validateScores(forValues, 70);
-
-        if (notaFinal >= 70 && actValid && forValid && parc1.value>=70 && parc2.value>=70) {
-          return "<h2 class='text-success'>PROMOCIONADO</h2>";
-        } else if (notaFinal >= 40) {
-          return "<h2 class='text-secondary'>REGULAR</h2>";
-        } else {
-          return "<h2 class='text-danger'>LIBRE</h2>";
-        }
-      }
-
-      function validateScores(values, threshold) {
-        const belowThreshold = values.filter(value => value < threshold);
-        return belowThreshold.length <= 1;
-      }
-
-      // Función para limpiar los inputs
-      function limpiarInputs() {
-        const inputIds = ["act1", "act2", "act3", "act4", "for1", "for2", "for3", "for4", "parc1", "parc2"];
-        inputIds.forEach(id => {
-          document.getElementById(id).value = 0;
-        });
-
-        // Limpiar los resultados y el estado
-        document.getElementById("nota").textContent = "";
-        document.getElementById("promActiv").textContent = "";
-        document.getElementById("promFor").textContent = "";
-        document.getElementById("promParc").textContent = "";
-        document.getElementById("status").innerHTML = "";
-      }
-    </script>
   </body>
 </html>
